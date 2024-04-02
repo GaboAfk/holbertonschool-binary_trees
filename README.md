@@ -69,6 +69,36 @@ Function that inserts a node as the right-child of another node.
 ```
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);
 ```
+**3. Delete**
+Function that deletes an entire binary tree.
+```
+void binary_tree_delete(binary_tree_t *tree);
+```
+**4. Is leaf**
+Function that checks if a node is a leaf.
+```
+int binary_tree_is_leaf(const binary_tree_t *node);
+```
+**5. Is root**
+Function that checks if a given node is a root.
+```
+int binary_tree_is_root(const binary_tree_t *node);
+```
+**6. Pre-order traversal**
+Ffunction that goes through a binary tree using pre-order traversal.
+```
+void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int));
+```
+**7. In-order traversal**
+Function that goes through a binary tree using in-order traversal.
+```
+void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int));
+```
+**8. Post-order traversal**
+Function that goes through a binary tree using post-order traversal.
+```
+void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));
+```
 
 
 
