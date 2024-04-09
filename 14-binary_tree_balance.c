@@ -6,23 +6,27 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_height - height of the each branch
+ * binary_height - height of the each branch
  * @tree: is a pointer to the node
  *
  * Return: height
  */
-int binary_tree_height(const binary_tree_t *tree)
+int binary_height(const binary_tree_t *tree)
 {
-	int left = 1, right = 1;
+	int left = 0, right = 0;
 
 	if (!tree)
 		return (0);
 
 	if (tree->left)
-		left += 1 + binary_tree_height(tree->left);
+		left += 1 + binary_height(tree->left);
+	else
+		left = 1;
 
 	if (tree->right)
-		right += 1 + binary_tree_height(tree->right);
+		right += 1 + binary_height(tree->right);
+	else
+		right = 1;
 
 	return (left > right ? left : right);
 }
@@ -38,5 +42,5 @@ int binary_tree_balance(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	return (binary_tree_height(tree->left) - binary_tree_height(tree->right));
+	return (binary_height(tree->left) - binary_height(tree->right));
 }
