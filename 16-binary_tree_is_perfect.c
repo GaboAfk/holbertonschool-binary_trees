@@ -15,22 +15,16 @@ int perfect_aux(const binary_tree_t *tree)
 {
 	int left = 0, right = 0;
 
-	if (!tree)
+	if (!tree || (!tree->left && !tree->right))
 		return (0);
 
 	if (tree->left)
 		left += 1 + perfect_aux(tree->left);
-	else
-		left = 1;
 
 	if (tree->right)
 		right += 1 + perfect_aux(tree->right);
-	else
-		right = 1;
 
-	if ((tree->left && tree->right) || (!tree->left && !tree->right))
-		return (left > right ? left : right);
-	return (0);
+	return (left > right ? left : right);
 }
 
 /*
