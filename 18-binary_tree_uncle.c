@@ -20,6 +20,10 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 		return (NULL);
 
 	grandfather = node->parent->parent;
+	if (grandfather->right == node->parent)
+		return (grandfather->left);
+	if (grandfather->left == node->parent)
+		return (grandfather->right);
 
-	return (grandfather);
+	return (NULL);
 }
