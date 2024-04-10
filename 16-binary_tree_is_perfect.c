@@ -20,7 +20,7 @@ int perfect_aux(const binary_tree_t *tree, int **full)
 
 	if ((!tree->left && tree->right) || (tree->left && !tree->right))
 	{
-		*full = 0;
+		**full = 0;
 		return (0);
 	}
 
@@ -30,7 +30,7 @@ int perfect_aux(const binary_tree_t *tree, int **full)
 	if (tree->right)
 		right += 1 + perfect_aux(tree->right, full);
 
-	if (*full)
+	if (**full == 1)
 		return (left > right ? left : right);
 	return (0);
 }
@@ -50,11 +50,16 @@ int perfect_aux(const binary_tree_t *tree, int **full)
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int *p, full = 1;
+	int *pl, *pr, full_left = 1, full_right = 1, height_left, height_right;
 
-	p = &full;
+	pl = &full_left;
+	pr = &full_right;
+
 	if (!tree)
 		return (0);
 
-	return (perfect_aux(tree->left, &p) == perfect_aux(tree->right, &p));
+	height_left = perfect_aux(tree->left, &pl);
+	height_right = perfect_aux(tree->right, &pr);
+
+	return (*pl && *pr ? height_left == height_right : 0);
 }
