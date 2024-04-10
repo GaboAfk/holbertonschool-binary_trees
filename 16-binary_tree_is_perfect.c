@@ -24,7 +24,9 @@ int perfect_aux(const binary_tree_t *tree)
 	if (tree->right)
 		right += 1 + perfect_aux(tree->right);
 
-	return (left > right ? left : right);
+	if ((tree->left && tree->right) || (!tree->left && !tree->right))
+		return (left > right ? left : right);
+	return (0);
 }
 
 /*
